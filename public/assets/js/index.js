@@ -1,9 +1,9 @@
 $(function () {
   // CREATE - add new burger
-  $(".create-form").on("submit", function (e) {
+  $(".create-burger").on("submit", function (e) {
     e.preventDefault();
     let newBurger = {
-      burger_name: $("#burger").val().trim(),
+      burger_name: $("#burger-name").val().trim(),
     };
     // Create burger
     $.ajax("/api/burgers", {
@@ -16,7 +16,6 @@ $(function () {
   });
   // UPDATE - Devour burger button functionality
   $(".devour").on("click", function (e) {
-    let name = $(this).text();
     let id = $(this).data("id");
     // Update burger
     $.ajax("/api/burgers/" + id, {
