@@ -14,6 +14,7 @@ $(function () {
       location.reload();
     });
   });
+  
   // UPDATE - Devour burger button functionality
   $(".devour").on("click", function (e) {
     let id = $(this).data("id");
