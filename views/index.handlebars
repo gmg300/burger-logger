@@ -5,7 +5,8 @@
       <h1>Eat-Da-Burger!</h1>
       <form class="create-form">
         <div class="form-group">
-          <input class="form-control form-control-lg my-2" type="text" id="burger" placeholder="Burger name" name="name">
+          <input class="form-control form-control-lg my-2" type="text" id="burger" placeholder="Burger name"
+            name="name">
         </div>
         <button class="btn btn-outline-red" type="submit">Add Burger</button>
       </form>
@@ -16,10 +17,9 @@
       <h3>Burgers Available</h3>
       <ul class="list-group">
         {{#each burgers}}
-        <li class="list-group-item input-group">
-          <span class="name">{{name}}</span>
-          <button class="btn btn-outline-red float-right" type="button" id="button-addon2">Devour</button>
-        </li>
+          {{#unless devoured}}
+            {{> burger devoured=false}}
+          {{/unless}}
         {{/each}}
       </ul>
     </div>
@@ -29,7 +29,9 @@
       <h3>Burgers Devoured</h3>
       <ul class="list-group">
         {{#each burgers}}
-        <li class="list-group-item disabled">{{name}}</li>
+        {{#if devoured}}
+          {{> burger devoured=true}}
+        {{/if}}
         {{/each}}
       </ul>
     </div>
