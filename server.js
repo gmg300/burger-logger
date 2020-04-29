@@ -5,6 +5,7 @@ const app = express();
 // Set Port
 const PORT = process.env.PORT || 8080;
 
+
 // Parse application body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,7 +23,8 @@ const routes = require("./controllers/burgerController");
 
 app.use(routes);
 
-// Start server
+// Start app
 app.listen(PORT, function() {
+  // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
