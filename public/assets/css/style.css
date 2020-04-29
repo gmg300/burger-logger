@@ -8,7 +8,7 @@ h3 {
 }
 
 .container-fluid {
-  width: 75%;
+  width: 95%;
 }
 
 .form-control {
@@ -37,9 +37,9 @@ h3 {
   display: inline;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 992px) {
   .container-fluid {
-    width: 95%;
+    width: 75%;
   }
 }
 
