@@ -2,7 +2,7 @@ let connection = require("./connection");
 
 let orm = {
   selectAll: function(tableInput, cb) {
-    let queryString = `SELECT * FROM ${tableInput}`;
+    let queryString = `SELECT * FROM ${tableInput};`;
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -10,41 +10,23 @@ let orm = {
       cb(result);
     });
   },
-  insertOne: function(table, cols, vals, cb) {
-    let queryString = "INSERT INTO " + table;
-
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
-
+  insertOne: function(table, col, val, cb) {
+    let queryString = `INSERT INTO ${table} (${col}) VALUES (?);`;
     console.log(queryString);
-
-    connection.query(queryString, vals, function(err, result) {
+    connection.query(queryString, val, function(err, result) {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
-  updateOne: function(table, objColVals, condition, cb) {
-    let queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-
+  updateOne: function(table, val, condition, cb) {
+    let queryString = `UPDATE ${table} SET ${val} WHERE ${condition};`;
     console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   }
